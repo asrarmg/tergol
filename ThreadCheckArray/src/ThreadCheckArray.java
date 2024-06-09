@@ -1,5 +1,6 @@
 public class ThreadCheckArray implements Runnable 
 {
+	// TE300D
 	private boolean flag;
 	private boolean [] winArray;
 	SharedData sd;
@@ -51,6 +52,7 @@ public class ThreadCheckArray implements Runnable
 	}
 
 	public void run() {
+		long startTime = System.currentTimeMillis();
 		if (array.length != 1)
 			if (Thread.currentThread().getName().equals("thread1"))
 				rec(array.length-1, b - array[array.length - 1]);
@@ -75,5 +77,8 @@ public class ThreadCheckArray implements Runnable
 				sd.setWinArray(winArray);
 			}	
 		}
+		 long  endTime = System.currentTimeMillis();
+		 System.out.println("Thread " + Thread.currentThread().getName() + " execution time: " + (endTime - startTime) + " milliseconds");
 	}
+	
 }
